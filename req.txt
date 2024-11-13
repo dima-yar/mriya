@@ -9,4 +9,4 @@ pyjwt
 python3-saml
 channels[daphne]
 channels_redis
-"django-allauth[socialaccount]"
+django-allauth[socialaccount]
