@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+
+    {% block header %}
+            {% load static %}
+            <title>Головна</title>
+            <link href="{% static 'dreams/css/style.css' %}"  rel="stylesheet">
+    {% endblock %}
+
+    {% block content %}
+            <p align="center"><b>{{user}}</b></p>
+    {% endblock %}

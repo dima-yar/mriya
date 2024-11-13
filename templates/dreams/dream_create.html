@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block header %}
+    {% load static %}
+    <link href="{% static 'dreams/css/create.css' %}"  rel="stylesheet">
+
+    <link href="{% static 'autocomplete_light/css/select2.min.css' %}"  rel="stylesheet">
+
+    <script src="{% static 'autocomplete_light/js/jquery-3.7.1.min.js' %}"></script>
+
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script src = "{% static 'dreams/js/tinymce_config.js' %}"></script>
+
+
+{% endblock %}
+{% block content %}
+
+<form class = "form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Створити нову мрію</h1>
+    <p>
+        <label class="label" for="id_title">Title:</label>
+        {{form.title}}
+    </p>
+
+
+    <p>
+        <label class="label" for="id_short_descriptions">Short descriptions:<br></label>
+        {{form.short_descriptions}}
+    </p>
+    <p>
+        <label class ="label" for="id_content">Content:</label>
+        {{form.content}}
+    </p>
+    <p>
+        <label class ="label" for="target_amount" class="tags-label">Tags:<br></label>
+        {{form.target_amount}}
+   </p>
+    <p>
+        <label class ="label"for="id_tags" class="tags-label">Tags:<br></label>
+        {{form.tags}}
+   </p>
+    <button class="button" type="submit">Зберегти</button>
+
+</form>
+
+<script src="{% static 'autocomplete_light/js/select2.min.js' %}"></script>
+<script src="{% static 'autocomplete_light/js/select2_initial.js' %}"></script>
+
+{% endblock %}

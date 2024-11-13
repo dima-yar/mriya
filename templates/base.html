@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="{% static 'dreams/css/header.css'%}"  rel="stylesheet" >
+        {% block header %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+
+            <a href="{% url 'dream_list' %}"><img src="{% static 'dreams/img/logo1.png' %}"></a>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'dream_list' %}">Home</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Create</a></li>
+                </ul>
+            </nav>
+
+            <form class="searchbox" action="{% url 'dream_search' %}">
+                <input type="search" name="search" placeholder="Search" />
+                <button type="submit" value="search">&nbsp;</button>
+            </form>
+
+        </header>
+        {% block content %}
+
+        {% endblock %}
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'private_polycy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'terms_of_service' %}">Terms of Service</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

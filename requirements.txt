@@ -1,0 +1,8 @@
+django
+django-allauth
+pillow
+requests
+requests-oauthlib
+python3-openid
+pyjwt
+python3-saml

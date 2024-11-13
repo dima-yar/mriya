@@ -1,0 +1,97 @@
+input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+.short_descriptions {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; 
+    max-height: 200px; 
+}
+
+
+.tinymce {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+	
+}
+
+footer nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+.short_descriptions {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    max-height: 200px;
+}
+.tags-label {
+    font-size: 32px;
+    color: black;
+    position: absolute;
+    bottom: 80px;
+}
+        #id_tags {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+            font-size: 14px;
+        }
+
+        #id_tags option {
+            padding: 5px;
+        }
+		
+button[type="submi"] {
+    height:80px;
+	width:100px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border: solid 5px;
+    cursor: pointer;
+    font-size: 16px;
+	padding-bottom:100px;
+}
+
+button[type="submi"]:hover {
+    background-color: #218838;
+}

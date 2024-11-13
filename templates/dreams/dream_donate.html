@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+    {% load static %}
+    <link href="{% static 'dreams/css/donate.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+<div class="donation-container">
+    <h2>Підтримайте проєкт</h2>
+    <p class="explanation">
+        Ця форма створена для демонстраційної мети. Всі платежі є імітацією, і кошти не будуть стягнені.
+    </p>
+
+    {% if dream.status == 'active' %}
+        <form method="post" class="donation-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="card_holder">Власник картки:</label>
+                {{ form.card_holder }}
+            </div>
+
+            <div class="form-group">
+                <label for="card_number">Номер картки:</label>
+                {{ form.card_number }}
+            </div>
+
+            <div class="form-group">
+                <label for="expiry_date">Дата закінчення:</label>
+                {{ form.expiry_date }}
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV код:</label>
+                {{ form.cvv }}
+            </div>
+
+            <button type="submit" class="donate-button">Задонатити</button>
+        </form>
+    {% else %}
+        <p class="donation-complete-message">Збір завершено</p>
+    {% endif %}
+</div>
+{% endblock %}

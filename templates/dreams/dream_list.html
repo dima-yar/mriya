@@ -1,0 +1,95 @@
+{% extends "base.html"%}
+
+{% block header %}
+        {% load static %}
+        <title>Мрії</title>
+        <link href="{% static 'dreams/css/style.css' %}"  rel="stylesheet">
+        <link href="{% static 'dreams/css/pagination.css' %}"  rel="stylesheet">
+    {% endblock %}
+
+
+    {% block content %}
+
+
+        {% for i in dreams %}
+
+            <div class="container1">
+                <div class="container2">
+                    <div class="title">{{i.title}}</div>
+                    <div class="username">
+                        <b>Автор:</b>
+                        {{i.author.username}}
+                         <img class="avatar" src="{{i.author.avatar.url}}">
+
+                    </div>
+                    <div class = "text">{{i.short_descriptions}}</div>
+                    <div class="container3">
+                        <div class="tags">
+                            {% for t in i.tags.all %}
+                                <a href="{% url 'dream_search' %}?tags={{ i.name }}">
+                                    <button class="hashtag-button blue">{{ i.name }}</button>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <div class="like-block " id="like-container" data-dream-id="{{ dreams.id }}">
+                            <div id="like-button" class="like-button">❤️ Лайк <span id="like-count" class="like-count">{{i.likes.count}}</span></div>
+                        </div>
+                        <a href="{% url 'dream_detail' id=i.id%}"><button class="button">Button</button></a>
+                    </div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+<div class="soft-pagination">
+    <ul class="soft-pagination-items">
+        <!-- Попередня сторінка -->
+        {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}">
+                    <i class="fa fa-chevron-circle-left" style="font-size:20px;color:white"><</i>
+                </a>
+            </li>
+        {% endif %}
+
+        <!-- Перша сторінка -->
+        {% if page_obj.number > 3 %}
+            <li><a href="?page=1">1</a></li>
+            {% if page_obj.number > 4 %}
+                <li>...</li>
+            {% endif %}
+        {% endif %}
+
+        <!-- Дві сторінки перед поточною сторінкою, поточна сторінка, і дві сторінки після неї -->
+        {% for num in page_obj.paginator.page_range %}
+            {% if num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+                {% if num == page_obj.number %}
+                    <li class="active">{{ num }}</li>
+                {% else %}
+                    <li><a href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        <!-- Остання сторінка -->
+        {% if page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+            {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+                <li>...</li>
+            {% endif %}
+            <li><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+        {% endif %}
+
+        <!-- Наступна сторінка -->
+        {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{ page_obj.next_page_number }}">
+                    <i class="fa fa-chevron-circle-right" style="font-size:20px;color:white;">></i>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+    <script src="{% static 'dreams/js/like_list.js' %}" type="text/javascript" defer></script>
+{% endblock %}

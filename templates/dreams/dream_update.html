@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block header %}
+    {% load static %}
+    <link href="{% static 'dreams/css/style.css' %}"  rel="stylesheet">
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#id_content',  // Виберіть текстову область
+            plugins: 'lists link image preview',  // Підключення плагінів
+            toolbar: 'undo redo | styles | bold italic underline | fontselect fontsizeselect | alignleft aligncenter alignright | bullist numlist | link image | code preview',
+            menubar: 'file edit view insert format tools table help',  // Додавання меню
+            font_formats: "Arial=arial,helvetica,sans-serif; Times New Roman=times new roman,times; Courier New=courier new,courier", // Кастомні шрифти
+            fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",  // Кастомні розміри шрифтів
+            height: 500,  // Висота редактора
+        });
+    </script>
+
+{% endblock %}
+{% block content %}
+    <h1>Створити нову мрію</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зберегти</button>
+    </form>
+{% endblock %}

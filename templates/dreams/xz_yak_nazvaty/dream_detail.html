@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="header.css"  rel="stylesheet" >
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="detail.css"  rel="stylesheet">
+
+
+    </head>
+    <body>
+        <header>
+
+            <a href="/"><img src="logo1.png"></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </nav>
+
+            <form class="searchbox" action="">
+                <input type="search" placeholder="Search" />
+                <button type="submit" value="search">&nbsp;</button>
+            </form>
+
+        </header>
+
+<div class="container1">
+        <div class="container2">
+            <div class="title">Hello world</div>
+            <div class="username">
+    <b>Автор:</b>
+     Name<img class="avatar" src="/media/avatars/2024.10.30_17.26/p5tnpvxzp9sb1.jpg">
+
+</div>
+            <div class="container3">
+                <div class="tags">
+
+                        <button class="hashtag-button blue">Здоров&#x27;я</button>
+
+                        <button class="hashtag-button blue">Подорожі</button>
+
+                        <button class="hashtag-button blue">Природа</button>
+
+                </div>
+
+                <div class="like-block " id="like-container" data-dream-id="2">
+                    <button id="like-button" class="like-button" role="button">❤️ Лайк <span id="like-count" class="like-count">0</span></button>
+                </div>
+            </div>
+            <div class="text"><h1 style="text-align: center;">Hello world</h1>
+<p style="text-align: left;"><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<em> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&nbsp;</em></p></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        let likeCount = 0;
+        document.getElementById('like-button').addEventListener('click', function() {
+            likeCount++;
+            document.getElementById('like-count').innerText = likeCount;
+        });
+    </script>
+
+
+<div class="soft-pagination">
+    <ul class="soft-pagination-items">
+      <li> <i class="fa fa-chevron-circle-left" style="font-size:20px;color:white"></i></li>
+        <li >1</li>
+        <li>2</li>
+        <li>3</li>
+		<li>...</li>
+		<li>21</li>
+       <li> <i class="fa fa-chevron-circle-right" style="font-size:20px;color:white;"></i></li>
+    </ul>
+</div>
+<br><br><br>
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

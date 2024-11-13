@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+    {% block header %}
+        {% load static %}
+        <title>Email Addresses</title>
+        <link href="{% static 'my_account/css/email.css'%}" rel="stylesheet">
+
+    {% endblock %}
+
+    {% block content %}
+        <div>
+            <h1>Email Addresses</h1>
+
+
+            <div class="signup-message">
+            <p style="font-size:15px;">
+                <strong>Warning:</strong> You currently do not have any email address set up. You should really add an email address so you can receive notifications, reset your password, etc.
+            </p>
+            </div>
+
+
+            <h2>Add Email Address</h2>
+
+            <form method="post" action="{ url 'email'}">
+                <input type="hidden" name="csrfmiddlewaretoken" value="gjzNT2te5OTpIN5lIbsjfGTKSuva4c9Xi4kKBlcOYpH9NxYTyQxxccnhk JSQOPVE">
+                <p>
+                    <label for="id_email">Email:</label>
+                    {{form.email}}
+                </p>
+                <button name="action_add" class="subreq">Add Email</button>
+            </form>
+
+            <script>
+                (function() {
+                    var message = "Do you really want to remove the selected email address?";
+                    var actions = document.getElementsByName('action_remove');
+                    if (actions.length) {
+                        actions[0].addEventListener("click", function(e) {
+                            if (!confirm(message)) {
+                                e.preventDefault();
+                            }
+                        });
+                    }
+                })();
+            </script>
+        </div>
+    {% endblock %}

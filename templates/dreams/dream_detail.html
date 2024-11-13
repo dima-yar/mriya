@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block header %}
+    {% load static %}
+    <link href="{% static 'dreams/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container1">
+    <div class="container2">
+        <div class="title">{{ dreams.title }}</div>
+        <div class="username">
+            <b>Автор:</b>
+            {{ dreams.author.username }}
+            <img class="avatar" src="{{ dreams.author.avatar.url }}">
+        </div>
+        <div class="container3">
+            <div class="tags">
+                {% for i in dreams.tags.all %}
+                    <a href="{% url 'dream_search' %}?tags={{ i.name }}">
+                        <button class="hashtag-button blue">{{ i.name }}</button>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="like-block" id="like-container" data-dream-id="{{ dreams.id }}">
+                <button id="like-button" class="like-button">❤️ Лайк
+                    <span id="like-count" class="like-count">{{ dreams.likes.count }}</span>
+                </button>
+            </div>
+            <!-- Нова кнопка для переходу на сторінку донату -->
+            <div class="donate-block">
+                <a href="{% url 'dream_donate' id=dreams.id%}">
+                    <button class="donate-button">Задонатити</button>
+                </a>
+            </div>
+        </div>
+        <div class="text">{{ dreams.content|safe }}</div>
+    </div>
+</div>
+<script src="{% static 'dreams/js/like_detail.js' %}" type="text/javascript" defer></script>
+{% endblock %}

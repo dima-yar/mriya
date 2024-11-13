@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+    {% block header %}
+        {% load static %}
+        <title>Sign Out</title>
+        <link href="{% static 'my_account/css/signout.css'%}" rel="stylesheet">
+    {% endblock%}
+
+    {% block content %}
+<div>
+    <h1>Sign Out</h1>
+    <p>Are you sure you want to sign out?</p>
+
+    <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        <button type="submited" class="submitted" name="action" value="signout">Sign Out</button>
+        <button type="button" class="declined" onclick="notSignOut()">Not Sign Out</button>
+    </form>
+
+    <script>
+        function notSignOut() {
+            alert("You chose not to sign out.");
+            // Add any other functionality here if needed
+        }
+    </script>
+</div>
+    {% endblock%}

@@ -1,0 +1,47 @@
+{% extends "base.html"%}
+
+{% block header %}
+        {% load static %}
+        <title>Мрії</title>
+        <link href="{% static 'dreams/css/style.css' %}"  rel="stylesheet">
+    {% endblock %}
+
+
+    {% block content %}
+    {% if search %}
+        <div class="search_box">
+            Результата пошуку за запитом<br>
+            {{search}}
+        </div>
+    {% endif %}
+
+        {% for i in dreams %}
+
+            <div class="container1">
+                <div class="container2">
+                    <div class="title">{{i.title}}</div>
+                    <div class="username">
+                        <b>Автор:</b>
+                        {{i.author.username}}
+                         <img class="avatar" src="{{i.author.avatar.url}}">
+
+                    </div>
+                    <div class = "text">{{i.short_descriptions}}</div>
+                    <div class="container3">
+                        <div class="tags">
+                            {% for t in i.tags.all %}
+                                <button class="hashtag-button green">{{t.name}}</button>
+                            {% endfor %}
+                        </div>
+                        <div class="like-block " id="like-container" data-dream-id="{{ dreams.id }}">
+                            <div id="like-button" class="like-button">❤️ Лайк <span id="like-count" class="like-count">{{i.likes.count}}</span></div>
+                        </div>
+                        <a href="{% url 'dream_detail' id=i.id%}"><button class="button">Button</button></a>
+                    </div>
+                </div>
+            </div>
+
+        <script src="{% static 'dreams/js/like_list.js' %}" type="text/javascript" defer></script>
+        <script src="{% static 'dreams/js/tags.js' %}" type="text/javascript" defer></script>
+        {% endfor %}
+    {% endblock %}
