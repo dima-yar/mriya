@@ -86,7 +86,7 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         },
         'CLIENT_ID': '352862610021-qv0rq0pe1q9otb7gk0n4fmuhit6lj7l9.apps.googleusercontent.com',
-        
+        'SECRET': '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',
     },
     'github': {
 
