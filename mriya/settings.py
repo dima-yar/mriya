@@ -33,7 +33,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS =[
+    'django.contrib.sites',
     "daphne",
     "dal",
     "dal_select2",
@@ -43,12 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
-
     "django_select2",
     "channels",
     "tinymce",
@@ -66,8 +67,27 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "allauth.account.middleware.AccountMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000',  # Додати локальні адреси
 ]
 SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'CLIENT_ID': '352862610021-qv0rq0pe1q9otb7gk0n4fmuhit6lj7l9.apps.googleusercontent.com',
+        'SECRET': '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',
+    },
     'github': {
 
         'APP': {
@@ -75,14 +95,15 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': 'a531f639f64de06701c1d3364c92ff0dde01ae39',
             'key': ''
         }
-    }
+    },
 }
+SITE_ID = 1
 
 ROOT_URLCONF = 'mriya.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
         'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -91,6 +112,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -104,7 +126,9 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [
+                ('rediss://default:AatoAAIjcDEzNDE3NGFjNzUwNDQ0N2FhOWU3ZDZlZGVhOTRhMzFlOXAxMA@deep-lamprey-43880.upstash.io:6379')
+            ],
         },
     },
 }
@@ -160,7 +184,6 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-TEMP_MEDIA_ROOT = BASE_DIR /'temp_media'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -228,8 +251,8 @@ EMAIL_HOST_PASSWORD = 'mbkm xwjy fpvd qslf'  # Ваш пароль або App Pa
 DEFAULT_FROM_EMAIL = 'authentication.mriya@gmail.com'  # Адреса, з якої надсилаються листи
 
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'dream_list'
+LOGOUT_REDIRECT_URL = 'account_login'
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Підтвердження електронної пошти обов'язкове
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3  # Посилання на підтвердження дійсне 3 дні
@@ -239,9 +262,10 @@ ACCOUNT_PASSWORD_RESET_TIMEOUT = 14400  # Час дії посилання дл�
 ACCOUNT_EMAIL_REQUIRED = True  # Вимога наявності email
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 
-ACCOUNT_EMAIL_CONFIRMATION = True
+ACCOUNT_EMAIL_CONFIRMATION_TEMPLATE = 'account/verification_sent.html'
+ACCOUNT_EMAIL_CONFIRMATION_REDIRECT_URL = 'email_confirm'
 
-ACCOUNT_EMAIL_CONFIRMATION_HTML = 'account/email/email_confirmation_message.html'
+
 
 
 

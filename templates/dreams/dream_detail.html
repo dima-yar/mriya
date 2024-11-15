@@ -29,13 +29,23 @@
             </div>
             <!-- Нова кнопка для переходу на сторінку донату -->
             <div class="donate-block">
-                <a href="{% url 'dream_donate' id=dreams.id%}">
-                    <button class="donate-button">Задонатити</button>
-                </a>
+                {% if dream.status == 'active' %}
+                    <a href="{% url 'dream_donate' id=dreams.id%}">
+                        <button class="donate-button">Задонатити</button>
+                    </a>
+                {% else %}
+                    <div class="donate-button">Збір завершено</div>
+                {%endif %}
             </div>
         </div>
         <div class="text">{{ dreams.content|safe }}</div>
     </div>
 </div>
+{% if is_owner %}
+    <div class="owner-block">
+        <a href="{% url 'dream_delete' id=dreams.id  %}" class="btn btn-delete">Видалити</a>
+        <a href="{% url 'dream_update' id=dreams.id %}" class="btn btn-update">Редагувати</a>
+    </div>
+{% endif %}
 <script src="{% static 'dreams/js/like_detail.js' %}" type="text/javascript" defer></script>
 {% endblock %}

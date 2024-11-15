@@ -11,12 +11,13 @@ from dreams.views import (
     upload_image,
     DreamsDonatetView,
     TermsOfServiceView,
-    PrivatePolycyView
+    PrivatePolycyView, HomePageView
 )
 from mriya import settings
 
 urlpatterns = [
 
+    path("", HomePageView.as_view()),
     path("private_polycy", PrivatePolycyView.as_view(), name="private_polycy"),
     path("terms_of_service", TermsOfServiceView.as_view(), name="terms_of_service"),
     path("dream", DreamsListView.as_view(), name="dream_list"),

@@ -1,11 +1,52 @@
 {% extends "base.html" %}
 
-    {% block header %}
+{% block header %}
+    {% load static %}
+    <title>Account</title>
+    <link href="{% static 'my_account/css/account.css'%}" rel="stylesheet">
 
-        <title>Profile</title>
+{% endblock %}
 
-    {% endblock %}
-    {% block content %}
-        {{user.username}}
-        <img src="{{user.avatar.url}}">
-    {% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-primary">Редагувати Профіль</h1>
+    <hr>
+    <div class="profile-row">
+        <!-- лівий стовпець -->
+        <div class="profile-left">
+            <div class="text-center">
+                <img src="{{user.avatar.url}}" class="avatar" alt="avatar">
+                <h6>{{user.username}}</h6>
+            </div>
+        </div>
+        
+        <!-- стовпець форми редагування -->
+        <div class="profile-right">
+            <h3>Особиста інформація</h3>
+            <div class="form-container">
+                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Ім'я:</label>
+                        {{form.username}}
+                    </div>
+                    <div class="form-group">
+                        <label>Завантажити фото:</label>
+                        {{form.avatar}}
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submitted" name="action" value="signout">Змінити</button>
+                    </div>
+                </form>
+            </div>
+            <div class="account-actions">
+                <h2 style="margin-left:20px;">Управління акаунтом</h2>
+                <span><a href="{% url 'account_change_password' %}">Змінити пароль</a></span> |
+                <span><a href="{% url 'account_email' %}">Змінити Email</a></span> |
+                <span><a href="{% url 'account_logout' %}">Вийти</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -12,9 +12,17 @@
             <a href="{% url 'dream_list' %}"><img src="{% static 'dreams/img/logo1.png' %}"></a>
             <nav>
                 <ul>
-                    <li><a href="{% url 'dream_list' %}">Home</a></li>
-                    <li><a href="#">Account</a></li>
-                    <li><a href="#">Create</a></li>
+                    <li><a href="{% url 'dream_list' %}">Головна</a></li>
+
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}">Аккаунт</a></li>
+                        <li><a href="{% url 'account_logout' %}">Вийти</a></li>
+                    {% else %}
+                        <li><a href="{% url 'account_login' %}">Увійти</a></li>
+                        <li><a href="{% url 'account_signup' %}">Реєстрація</a></li>
+                    {% endif %}
+                        <li><a href="{% url 'dream_create' %}">Нова мрія</a></li>
+
                 </ul>
             </nav>
 

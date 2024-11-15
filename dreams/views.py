@@ -20,9 +20,19 @@ class PrivatePolycyView(TemplateView):
 class TermsOfServiceView(TemplateView):
     template_name = "dreams/terms_of_service.html"
 
+
+class HomePageView(TemplateView):
+    template_name = "dreams/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
+
+
 class DreamsListView(ListView):
     model = Dream
-    paginate_by = 1
+    paginate_by = 3
     template_name = "dreams/dream_list.html"
     context_object_name = "dreams"
 
@@ -70,6 +80,12 @@ class DreamsDetailView(DetailView):
     pk_url_kwarg = 'id'
     context_object_name = "dreams"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_owner'] = self.object.author == self.request.user
+        print( context['is_owner'])
+        context['dream_id'] = self.object.pk
+        return context
 
 # views.py
 class DreamsCreateView(LoginRequiredMixin, CreateView):
@@ -91,12 +107,13 @@ class DreamUpdateView(UserPassesTestMixin, UpdateView):
     pk_url_kwarg = 'id'
 
     def get_success_url(self):
-        return reverse_lazy("dream", kwargs={'id': self.object.id})
+        return reverse_lazy("dream_detail", kwargs={'id': self.object.id})
 
     def test_func(self):
 
         dreams = self.get_object()
         return dreams.author == self.request.user
+
 
 
 class DreamsDeleteView(UserPassesTestMixin, DeleteView):

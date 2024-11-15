@@ -19,26 +19,33 @@
     {% csrf_token %}
     <h1>Створити нову мрію</h1>
     <p>
-        <label class="label" for="id_title">Title:</label>
+        <label class="label" for="id_title">Заголовок:</label>
         {{form.title}}
     </p>
 
 
     <p>
-        <label class="label" for="id_short_descriptions">Short descriptions:<br></label>
+        <label class="label" for="id_short_descriptions">Короткий опис:<br></label>
         {{form.short_descriptions}}
     </p>
     <p>
-        <label class ="label" for="id_content">Content:</label>
+        <label class ="label" for="id_content">Мрія:</label>
         {{form.content}}
     </p>
     <p>
-        <label class ="label" for="target_amount" class="tags-label">Tags:<br></label>
+        <label class ="label" for="target_amount" class="tags-label">Мета збору<br></label>
         {{form.target_amount}}
    </p>
     <p>
-        <label class ="label"for="id_tags" class="tags-label">Tags:<br></label>
+        <label class ="label"for="id_tags" class="tags-label">Теги:<br></label>
         {{form.tags}}
+        {% if form.tags.errors %}
+            <div class="error-message">                <ul>
+                    {% for error in form.tags.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+        {% endif %}
    </p>
     <button class="button" type="submit">Зберегти</button>
 

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load socialaccount %}
+{% load static %}
+
+{% block header %}
+    <title>Увійти через {{provider.id}}</title>
+    <link href="{% static 'account/css/socialaccount.css '%}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <div class="menu-section">
+            <strong>Menu:</strong>
+            <ul>
+                <li><a href="/accounts/email/">Change Email</a></li>
+                <li><a href="/accounts/password/change/">Change Password</a></li>
+                <li><a href="/accounts/3rdparty/">Account Connections</a></li>
+                <li><a href="/accounts/logout/">Sign Out</a></li>
+            </ul>
+        </div>
+
+        <div class="login-content">
+            <div class="login-header">
+                {% if provider.id == 'google' %}
+                    <h1>Sign In Via Google</h1>
+                {% elif provider.id == 'github' %}
+                    <h1>Sign In Via GitHub</h1>
+                {% else %}
+                    <h1>Sign In</h1>
+                {% endif %}
+            </div>
+
+            <p>You are about to sign in using a third-party account from {% if provider.id == 'google' %}Google{% elif provider.id == 'github' %}GitHub{% else %}another provider{% endif %}.</p>
+
+            <form method="post" action="">
+                {% csrf_token %}
+                <button type="submit" class="continue-btn">Continue</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

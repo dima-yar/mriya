@@ -1,3 +1,8 @@
+.dreams{
+    margin-bottom: 350px;
+    width: 100%;
+}
+
 .container1 {
   width: 80%;
   margin: 0 auto;
@@ -70,6 +75,7 @@ input[type="search"]:focus{
   margin-top:25px;
 }
 .container3 a{
+    color: #000;
     text-decoration: none;
 }
 .tags{
@@ -132,6 +138,8 @@ input[type="search"]:focus{
 
 .like-button {
     background-color: #007bff;
+    display: flex;
+    self-align:center;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -147,8 +155,8 @@ input[type="search"]:focus{
 .like-count {
     display: block;
     margin-top: 0px;
-    left: 0px;
-    font-size: 24px;
+    margin-left: 5px;
+    font-size: 20px;
 }
 .avatar {
     width: 40px;
@@ -184,4 +192,45 @@ input[type="search"]:focus{
 
 .donate-button:hover {
     background-color: #45a049;
+}
+.owner-block{
+    display:flex;
+    justify-content: space-around;
+    width:50%;
+    margin-left:25%;
+    margin-bottom: 250px;
+}
+.btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Стиль для кнопки "Видалити" (червона) */
+.btn-delete {
+    background-color: #dc3545;  /* Червоний колір */
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;  /* Темніший червоний при наведенні */
+    transform: translateY(-2px);  /* Легке підняття кнопки */
+}
+
+/* Стиль для кнопки "Редагувати" (синя) */
+.btn-update {
+    background-color: #007bff;  /* Синій колір */
+    color: white;
+    border: none;
+}
+
+.btn-update:hover {
+    background-color: #0056b3;  /* Темніший синій при наведенні */
+    transform: translateY(-2px);  /* Легке підняття кнопки */
 }

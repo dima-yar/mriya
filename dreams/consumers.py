@@ -55,7 +55,6 @@ class LikeConsumer(WebsocketConsumer):
             }
         )
 
-        print(f'dream_id: {self.id}\n like_count: {like_count}')
 
     def handle_like(self, user):
         dream = get_object_or_404(Dream, id=self.id)

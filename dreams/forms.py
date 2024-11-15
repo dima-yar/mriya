@@ -1,8 +1,10 @@
 # forms.py
 from dal import autocomplete
+from django.core.exceptions import ValidationError
 from django.forms import ModelForm, Textarea, TextInput, Form, CharField, DecimalField, NumberInput
 from tinymce.widgets import TinyMCE
 from dreams.models import Dream
+
 
 class DreamForm(ModelForm):
     class Meta:
@@ -23,11 +25,19 @@ class DreamForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def clean_tags(self):
+        tags = self.cleaned_data.get('tags')
+        max_tags = 3  # Максимальна кількість тегів
+        if len(tags) > max_tags:
+            raise ValidationError(f"Можна вибрати не більше {max_tags} тегів.")
+        return tags
+
 
 class DonateForm(Form):
-    card_holder = CharField(max_length=255, label="Card Holder Name")
-    card_number = CharField(max_length=16, label="Card Number")
-    expiry_date = CharField(max_length=5, label="Expiry Date (MM/YY)")
-    cvv = CharField(max_length=3, label="CVV")
-    amount = DecimalField(label="Donation amount")
+    card_number = CharField(max_length=16)
+    expiry_date = CharField(max_length=5)
+    cvv = CharField(max_length=3)
+    amount = DecimalField()
+
+
 

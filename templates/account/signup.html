@@ -45,13 +45,19 @@
             <button class="signup">Sign Up</button>
 			
         </form>
+        {{form.errors}}
 <br>
 <hr style="margin: 0 5%;">
 
         <h2>Or use a third-party</h2>
 
         <ul>
-            <li><a title="GitHub" href="{% provider_login_url 'github' %}">GitHub</a></li>
+        {% get_providers as socialaccount_providers %}
+        {% for provider in socialaccount_providers %}
+            <li>
+                <a href="{% provider_login_url provider.id %}">Увійти через {{ provider.name }}</a>
+            </li>
+        {% endfor %}
         </ul>
 		
     </div>

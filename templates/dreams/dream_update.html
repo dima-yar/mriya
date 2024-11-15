@@ -3,6 +3,9 @@
 {% block header %}
     {% load static %}
     <link href="{% static 'dreams/css/style.css' %}"  rel="stylesheet">
+    <link href="{% static 'autocomplete_light/css/select2.min.css' %}"  rel="stylesheet">
+
+    <script src="{% static 'autocomplete_light/js/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
     <script>
         tinymce.init({

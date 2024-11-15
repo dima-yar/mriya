@@ -1,0 +1,75 @@
+body {
+    background-color: #f5f5f5;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    max-width: 1000px;
+    height: auto; /* Змінено на auto для адаптивності */
+    margin: 10px auto; /* Center the container */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 100px; /* Додає місце під контейнером для футера */
+}
+
+.profile-row {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between columns */
+}
+
+.profile-left {
+    flex:  1; /* Take up equal space in the row */
+    margin-right: 20px; /* Add some space between columns */
+}
+
+.profile-right {
+    flex: 2; /* Take up more space than the left column */
+}
+
+.avatar {
+    width: 150px; /* Set a fixed width for the avatar */
+    height: 150px; /* Set a fixed height for the avatar */
+    border-radius: 50%; /* Make the avatar circular */
+}
+
+.form-container {
+    margin: 20px auto; /* Add space above the form */
+    width: 440px;
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-control {
+    width: 100%; /* Full width for input fields */
+    padding: 10px; /* Padding for input fields */
+    border: 1px solid #ccc; /* Border for input fields */
+    border-radius: 4px; /* Rounded corners for input fields */
+}
+
+button.submitted {
+    height: 30px;
+    width: 100px;
+    background-color: #41D636;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button.submitted:hover {
+    background-color: #22591d;
+}
+
+.account-actions {
+    margin-top: 20px; /* Space above account actions */
+    text-align: left; /* Align text to the left */
+}
+

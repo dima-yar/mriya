@@ -1,0 +1,81 @@
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content {
+    width: 800px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+.buttons a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+            background-color: #41D636;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.buttons a:hover {
+            background-color: #22591d;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.hashtag-button {
+  padding: 8px 16px;
+  background-color: #e5f2e5;
+  color: #000;
+  border: 1px solid #99ff99;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.hashtag-button a{
+    color: #000;
+    text-decoration:none;
+}
+
+
+p {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.signup-message {
+    height: auto; /* Висота блоку автоматична для адаптації до вмісту */
+    width: 270px; /* Ширина блоку */
+    background-color: #e9f7ef; /* Колір фону */
+    border: 1px solid #b2ebf2; /* Межа */
+    border-radius: 5px; /* Закруглення кутів */
+    margin: 20px; /* Відступи з усіх боків */
+    font-size: 0.8rem; 
+    text-align: left; /* Вирівнювання тексту по лівому краю */
+    padding: 10px; /* Внутрішній відступ */
+    float: right; /* Розташування блоку праворуч */
+}

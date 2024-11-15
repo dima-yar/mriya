@@ -1,47 +1,34 @@
 {% extends "base.html" %}
 
-{% load socialaccount %}
-
 {% block header %}
-
     {% load static %}
     <link href="{% static 'my_account/css/login.css'%}" rel="stylesheet">
-
 {% endblock %}
 
 {% block content %}
-
-    
     <div>
-	
-        <h1>Sign In</h1>
-		<div class="signup-message">
-        <p>If you have not created an account yet,<br> then please <a href="http://127.0.0.1:8000/accounts/signup/">sign up</a> first.</p>
+        <h1>Увійти</h1>
+        <div class="signup-message">
+            <p>Якщо у вас ще немає облікового запису,<br> будь ласка, <a href="{% url 'account_signup' %}">зареєструйтесь</a> спочатку.</p>
         </div>
         <form method="post" action="{% url 'account_login' %}">
             {% csrf_token %}
             <p>
-                <label for="id_login">Username:</label>
+                <label for="id_login">Ім'я користувача:</label>
                 {{form.login}}
             </p>
             <p>
-                <label for="id_password">Password:</label>
+                <label for="id_password">Пароль:</label>
                 {{form.password}}
             </p>
-			<p>
-                <label for="id_remember">Remember Me:</label>
+            <p>
+                <label for="id_remember">Запам'ятати мене:</label>
                 {{form.remember}}
             </p>
-             <button type="submit" class="signin">Sign In</button>
-             <span class="helptext" id="id_password_helptext">
-                <a href="{% url 'account_reset_password' %}">Forgot your password?</a>
-             </span>
+            <button type="submit" class="signin">Увійти</button>
+            <span class="helptext" id="id_password_helptext">
+                <a href="{% url 'account_reset_password' %}">Забули пароль?</a>
+            </span>
         </form>
-        <br>
-        <hr style="margin: 0 5%;">
-        <h2>Or use a third-party</h2>
-        <ul>
-            <li><a title="GitHub" href="{% provider_login_url 'github' %}">GitHub</a></li>
-        </ul>
     </div>
 {% endblock %}
